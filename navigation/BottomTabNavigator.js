@@ -9,7 +9,6 @@ import SettingsScreen from "../screens/SettingsScreen";
 import Header from "../components/Header";
 import MesCoursScreen from "../screens/MesCoursScreen";
 
-// Exemple de contexte pour la gestion de la photo de profil
 const ProfileContext = React.createContext({
   userProfileImage: null,
   setUserProfileImage: () => {},
@@ -34,7 +33,11 @@ export default function BottomTabNavigator() {
             iconName = focused ? "settings" : "settings-outline";
             return <Ionicons name={iconName} size={size} color={color} />;
           } else if (route.name === "Profile") {
-            iconName = userProfileImage ? "circle-user" : focused ? "circle-user" : "user-circle";
+            iconName = userProfileImage
+              ? "circle-user"
+              : focused
+              ? "circle-user"
+              : "user-circle";
             return <Icon name={iconName} size={size} color={color} />;
           } else if (route.name === "Mes Cours") {
             iconName = focused ? "book" : "book-outline";
@@ -49,8 +52,8 @@ export default function BottomTabNavigator() {
         name="Acceuil"
         component={DashboardScreen}
         options={{
-          // headerTitle: () => <Header />,
-          headerShown: false,
+          headerTitle: () => <Header />,
+          headerShown: true,
         }}
       />
       <Tab.Screen
