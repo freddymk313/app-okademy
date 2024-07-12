@@ -1,5 +1,6 @@
 import React from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
+import tw from 'twrnc';
 
 const categories = [
   {
@@ -30,25 +31,23 @@ const categories = [
 
 export default function Categories() {
   return (
-    <View className="px-4 py-3">
-      <Text className="text-base font-bold pb-2">
+    <View style={tw`px-4 py-3`}>
+      <Text style={tw`text-base font-bold pb-2`}>
         Que voulez-vous apprendre aujourd'hui?
       </Text>
-      <View className="relative">
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} className="space-x-4">
+      <View style={tw`relative`}>
+        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={tw`space-x-4`}>
           {categories.map((category) => (
             <TouchableOpacity
               key={category.title}
-              style={{ minWidth: 200, maxWidth: 200 }}
-              className="bg-white shadow-xl rounded-lg overflow-hidden"
+              style={[tw`bg-white shadow-xl rounded-lg overflow-hidden`, { minWidth: 200, maxWidth: 200 }]}
             >
               <Image
                 source={{ uri: category.image }}
-                style={{ width: '100%', height: 110 }}
-                className="object-cover"
+                style={tw`w-full h-28 object-cover`}
               />
-              {/* <View className="p-4">
-                <Text className="text-lg font-semibold">{category.title}</Text>
+              {/* <View style={tw`p-4`}>
+                <Text style={tw`text-lg font-semibold`}>{category.title}</Text>
               </View> */}
             </TouchableOpacity>
           ))}
